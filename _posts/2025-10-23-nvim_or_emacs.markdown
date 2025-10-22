@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "(n)vim or Emacs?"
-date: 2025-10-23
+date: 2025-10-23 12:00:00 +0000
 categories: [blog, editors]
 ---
 
