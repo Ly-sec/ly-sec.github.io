@@ -21,10 +21,11 @@ To my surprise, Emacs (especially *Doom Emacs*) feels **surprisingly accessible*
 The overall defaults make sense, and the experience feels coherent in a way I didn’t anticipate.
 
 I also didn’t expect how good **Magit** is.  
-I’m relatively new to both Git and Vim, and I always assumed Neovim was *the* choice, since everyone online seems to swear by it.
+I’m relatively new to both Git and Vim, and I always assumed Neovim was *the* choice as an editor and obviously lazygit, since everyone online seems to swear by it.
 
 However, after spending time with Doom, I realized something:  
 it just **feels more reasonable** to me.
+The same goes for **Magit**, it just feels more natural compared to what lazyvim felt like.
 
 ---
 
