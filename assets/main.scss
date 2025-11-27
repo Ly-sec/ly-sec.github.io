@@ -7,30 +7,31 @@
    Kanagawa color palette
    ------------------------- */
 :root {
-  --ink:    #0b1220;
-  --wave:   #274060;
-  --sky:    #6ea6de;
-  --sand:   #e7cfa9;
-  --peach:  #ff8f6b;
-  --pine:   #1f6f44;
-  --mist:   #dbeaf6;
-  --rose:   #c16b78;
-  --gold:   #d6a84a;
+  --bg:           #1f1f28;
+  --surface:      #2a2a37;
+  --panel:        #363646;
+  --line:         #54546d;
+  --text:         #dcd7ba;
+  --muted:        #938aa9;
+  --accent:       #7e9cd8;
+  --accent-strong:#957fb8;
+  --accent-warm:  #ff9e3b;
+  --accent-red:   #c34043;
+  --accent-green: #76946a;
 }
 
 /* SCSS aliases */
-$ink:    #0b1220;
-$ink-soft: #10182d;  /* manually darkened */
-$ink-faint: #22293b; /* manually darkened */
-$wave:   #274060;
-$wave-dark: #1f354f; /* manually darkened */
-$sky:    #6ea6de;
-$sand:   #e7cfa9;
-$peach:  #ff8f6b;
-$pine:   #1f6f44;
-$mist:   #dbeaf6;
-$rose:   #c16b78;
-$gold:   #d6a84a;
+$bg:           #1f1f28;
+$surface:      #2a2a37;
+$panel:        #363646;
+$line:         #54546d;
+$text:         #dcd7ba;
+$muted:        #938aa9;
+$accent:       #7e9cd8;
+$accent-strong:#957fb8;
+$accent-warm:  #ff9e3b;
+$accent-red:   #c34043;
+$accent-green: #76946a;
 
 /* subtle card shadow */
 @mixin card-elevate {
@@ -42,41 +43,41 @@ $gold:   #d6a84a;
    Base styles
    ------------------------- */
 body {
-  background: linear-gradient(180deg, $mist 0%, #f7f9fc 100%);
-  color: $ink;
+  background: linear-gradient(180deg, $bg 0%, $surface 100%);
+  color: $text;
 }
 
 /* Links */
 a {
-  color: $wave;
+  color: $accent;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 
   &:hover,
   &:focus {
-    color: $sky;
+    color: $accent-strong;
   }
 
   &:visited {
-    color: $gold;
+    color: $accent-warm;
   }
 }
 
 /* Header */
 .site-header {
   background: transparent;
-  border-bottom: 1px solid rgba(11,18,32,0.06);
+  border-bottom: 1px solid rgba($line,0.35);
 
   .site-title,
   .site-description {
-    color: $ink;
+    color: $text;
   }
 
   .nav a {
-    color: $ink-soft;
+    color: $muted;
 
     &:hover {
-      color: $wave;
+      color: $accent;
     }
   }
 }
@@ -85,34 +86,34 @@ a {
 .main-content,
 .archive,
 .post-card {
-  background: linear-gradient(180deg, rgba($sand,0.02), rgba($mist,0.02));
+  background: linear-gradient(180deg, rgba($surface,0.95), rgba($panel,0.95));
   @include card-elevate;
   padding: 1.4rem 1.6rem;
 }
 
 /* Headings */
 h1, h2, h3, h4 {
-  color: $ink;
+  color: $text;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-h1 { color: $wave; }
-h2 { color: $pine; }
-h3 { color: $rose; }
+h1 { color: $accent; }
+h2 { color: $accent-green; }
+h3 { color: $accent-red; }
 
 /* HR */
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(11,18,32,0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba($line,0.4), transparent);
   margin: 2rem 0;
 }
 
 /* Blockquote */
 blockquote {
-  border-left: 4px solid $sky;
-  background: rgba($sky, 0.06);
-  color: $ink-soft;
+  border-left: 4px solid $accent;
+  background: rgba($panel, 0.8);
+  color: $text;
   padding: 0.9rem 1.1rem;
   border-radius: 8px;
   font-style: italic;
@@ -120,8 +121,8 @@ blockquote {
 
 /* Code blocks */
 pre.highlight {
-  background: linear-gradient(180deg, rgba($wave,0.06), rgba($ink,0.02));
-  color: #f8fbff;
+  background: linear-gradient(180deg, rgba($panel,0.95), rgba($surface,0.95));
+  color: $text;
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
@@ -129,15 +130,15 @@ pre.highlight {
 
 pre code,
 code {
-  background: rgba($ink, 0.06);
+  background: rgba($line, 0.45);
   border-radius: 6px;
   padding: 0.12rem 0.36rem;
-  color: $peach;
+  color: $accent-warm;
 }
 
 /* Buttons */
 .btn, .button {
-  background: linear-gradient(180deg, $wave, $wave-dark);
+  background: linear-gradient(180deg, $accent, $accent-strong);
   color: #fff;
   padding: 0.55rem 0.85rem;
   border-radius: 10px;
@@ -146,15 +147,15 @@ code {
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(39,64,96,0.22);
+    box-shadow: 0 10px 28px rgba(149,127,184,0.3);
   }
 }
 
 /* Footer */
 .site-footer {
   background: transparent;
-  color: $ink-faint;
-  border-top: 1px solid rgba(11,18,32,0.04);
+  color: $muted;
+  border-top: 1px solid rgba($line,0.25);
 }
 
 /* Tables */
@@ -163,28 +164,28 @@ table {
   border-collapse: collapse;
 
   th {
-    background: rgba($wave, 0.06);
+    background: rgba($panel, 0.8);
     padding: 0.6rem;
     text-align: left;
-    color: $ink;
+    color: $text;
   }
 
   td {
     padding: 0.6rem;
-    border-top: 1px solid rgba($ink,0.06);
+    border-top: 1px solid rgba($line,0.5);
   }
 }
 
 /* Focus outlines */
 :focus {
-  outline: 3px solid rgba($sky, 0.18);
+  outline: 3px solid rgba($accent, 0.35);
   outline-offset: 3px;
 }
 
 /* Images */
 img {
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(2,8,23,0.06);
+  box-shadow: 0 6px 18px rgba(31,31,40,0.4);
 }
 
 /* Mobile */
