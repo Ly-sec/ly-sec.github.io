@@ -1,0 +1,73 @@
+---
+# Only front matter so Jekyll processes this file.
+---
+
+@import "minima";
+
+$kanagawa-bg: #1f1f28;
+$kanagawa-surface: #2a2a37;
+$kanagawa-panel: #363646;
+$kanagawa-text: #dcd7ba;
+$kanagawa-muted: #7e9cd8;
+$kanagawa-accent: #ffa066;
+$kanagawa-accent-strong: #c34043;
+
+body {
+  background-color: $kanagawa-bg;
+  color: $kanagawa-text;
+}
+
+a,
+a:visited {
+  color: $kanagawa-accent;
+}
+
+a:hover,
+a:focus {
+  color: $kanagawa-accent-strong;
+}
+
+.site-header,
+.site-footer {
+  background-color: $kanagawa-surface;
+  color: $kanagawa-text;
+  border-color: $kanagawa-panel;
+}
+
+.site-nav .page-link {
+  color: $kanagawa-text;
+
+  &:hover {
+    color: $kanagawa-accent;
+  }
+}
+
+.post,
+.page-content {
+  background-color: $kanagawa-surface;
+  border: 1px solid $kanagawa-panel;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.post-title,
+.post-meta,
+.page-heading,
+.site-title,
+.site-title:visited {
+  color: $kanagawa-text;
+}
+
+code,
+pre {
+  background-color: $kanagawa-panel;
+  color: $kanagawa-text;
+  border: none;
+}
+
+blockquote {
+  border-left-color: $kanagawa-muted;
+  color: $kanagawa-text;
+  background-color: $kanagawa-panel;
+}
+
