@@ -1,73 +1,213 @@
 ---
-# Only front matter so Jekyll processes this file.
 ---
 
+/* Import the minima theme first so we can override after */
 @import "minima";
 
-$kanagawa-bg: #1f1f28;
-$kanagawa-surface: #2a2a37;
-$kanagawa-panel: #363646;
-$kanagawa-text: #dcd7ba;
-$kanagawa-muted: #7e9cd8;
-$kanagawa-accent: #ffa066;
-$kanagawa-accent-strong: #c34043;
+/* -------------------------
+   Kanagawa color palette
+   -------------------------
+*/
+:root {
+  --kanagawa-ink:    #0b1220; /* deep navy / almost black */
+  --kanagawa-wave:   #274060; /* deep blue */
+  --kanagawa-sky:    #6ea6de; /* light blue accent */
+  --kanagawa-sand:   #e7cfa9; /* warm beige */
+  --kanagawa-peach:  #ff8f6b; /* peachy accent */
+  --kanagawa-pine:   #1f6f44; /* pine green */
+  --kanagawa-mist:   #dbeaf6; /* pale background tint */
+  --kanagawa-rose:   #c16b78; /* muted rose */
+  --kanagawa-gold:   #d6a84a; /* highlight / link visited */
+}
 
+/* SCSS variables (for use inside this file) */
+$ink:    var(--kanagawa-ink);
+$wave:   var(--kanagawa-wave);
+$sky:    var(--kanagawa-sky);
+$sand:   var(--kanagawa-sand);
+$peach:  var(--kanagawa-peach);
+$pine:   var(--kanagawa-pine);
+$mist:   var(--kanagawa-mist);
+$rose:   var(--kanagawa-rose);
+$gold:   var(--kanagawa-gold);
+
+/* Utility: subtle inner shadow for cards */
+@mixin card-elevate {
+  box-shadow: 0 6px 18px rgba(2,8,23,0.12), inset 0 -1px 0 rgba(255,255,255,0.02);
+  border-radius: 12px;
+}
+
+/* -------------------------
+   Page / base
+   ------------------------- */
 body {
-  background-color: $kanagawa-bg;
-  color: $kanagawa-text;
+  background: linear-gradient(180deg, $mist 0%, #f7f9fc 100%);
+  color: $ink;
+  font-weight: 400;
+  /* make text a tad warmer */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-a,
-a:visited {
-  color: $kanagawa-accent;
-}
-
-a:hover,
-a:focus {
-  color: $kanagawa-accent-strong;
-}
-
-.site-header,
-.site-footer {
-  background-color: $kanagawa-surface;
-  color: $kanagawa-text;
-  border-color: $kanagawa-panel;
-}
-
-.site-nav .page-link {
-  color: $kanagawa-text;
-
-  &:hover {
-    color: $kanagawa-accent;
+/* Links */
+a {
+  color: $wave;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  &:hover,
+  &:focus {
+    color: $sky;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $gold;
   }
 }
 
-.post,
-.page-content {
-  background-color: $kanagawa-surface;
-  border: 1px solid $kanagawa-panel;
-  padding: 1.5rem;
+/* Header / nav */
+.site-header {
+  background: transparent;
+  border-bottom: 1px solid rgba($ink, 0.06);
+  .site-title, .site-description {
+    color: $ink;
+  }
+  .nav {
+    a {
+      color: darken($ink, 6%);
+      &:hover { color: $wave; }
+    }
+  }
+}
+
+/* Main content card */
+.main-content,
+.archive,
+.post-card {
+  background: linear-gradient(180deg, rgba($sand,0.02), rgba($mist,0.02));
+  @include card-elevate;
+  padding: 1.4rem 1.6rem;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  color: $ink;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+h1 { color: $wave; }
+h2 { color: $pine; }
+h3 { color: $rose; }
+
+/* Horizontal rule */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba($ink,0.06), transparent);
+  margin: 2rem 0;
+}
+
+/* Blockquote style - gentle Kanagawa vibe */
+blockquote {
+  border-left: 4px solid $sky;
+  background: rgba($sky, 0.06);
+  color: darken($ink, 18%);
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  font-style: italic;
   border-radius: 8px;
 }
 
-.post-title,
-.post-meta,
-.page-heading,
-.site-title,
-.site-title:visited {
-  color: $kanagawa-text;
+/* Code blocks and inline code */
+pre.highlight, pre, code {
+  background: linear-gradient(180deg, rgba($wave,0.06), rgba($ink,0.02));
+  color: #f8fbff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  border-radius: 8px;
 }
 
-code,
-pre {
-  background-color: $kanagawa-panel;
-  color: $kanagawa-text;
+pre.highlight {
+  padding: 1rem;
+  overflow: auto;
+  /* syntax theme-ish accents */
+  .hljs-keyword, .hljs-selector-tag { color: $peach; }
+  .hljs-string, .hljs-title { color: $sand; }
+  .hljs-number, .hljs-literal { color: $sky; }
+  .hljs-comment { color: rgba($ink, 0.45); font-style: italic; }
+}
+
+/* Inline code */
+:where(p, li) > code {
+  padding: 0.12rem 0.36rem;
+  border-radius: 6px;
+  background: rgba($ink, 0.06);
+  color: $peach;
+  font-size: 0.95em;
+}
+
+/* Buttons / call-to-action */
+.btn, .button {
+  background: linear-gradient(180deg, $wave, darken($wave, 8%));
+  color: #fff;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
   border: none;
+  box-shadow: 0 6px 18px rgba(39,64,96,0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(39,64,96,0.22);
+  }
 }
 
-blockquote {
-  border-left-color: $kanagawa-muted;
-  color: $kanagawa-text;
-  background-color: $kanagawa-panel;
+/* Footer */
+.site-footer {
+  background: transparent;
+  color: darken($ink, 12%);
+  border-top: 1px solid rgba($ink, 0.04);
+  padding-top: 1rem;
 }
 
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  th {
+    background: rgba($wave, 0.06);
+    padding: 0.6rem;
+    text-align: left;
+    color: $ink;
+  }
+  td {
+    padding: 0.6rem;
+    border-top: 1px solid rgba($ink,0.06);
+  }
+}
+
+/* Minor utilities */
+.kana-badge {
+  display: inline-block;
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $sand, $peach);
+  color: $ink;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Accessibility: make focus outlines visible and Kanagawa colored */
+:focus {
+  outline: 3px solid rgba($sky, 0.18);
+  outline-offset: 3px;
+}
+
+/* Make images slightly rounded for the softer Kanagawa look */
+img {
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(2,8,23,0.06);
+}
+
+/* small screens adjustments */
+@media (max-width: 768px) {
+  .main-content { padding: 1rem; }
+  h1 { font-size: 1.8rem; }
+}
