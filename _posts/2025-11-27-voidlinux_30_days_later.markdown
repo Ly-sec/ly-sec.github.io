@@ -6,7 +6,7 @@ date: 2025-11-27
 Alright so it's officially been a bit more than 30 days since I wiped my drive and commited to Voidlinux for real.
 And honestly? It's been kind of... uneventful. In a good way.
 
-To give you an idea of what I'm working with, here’s my current fastfetch:
+To give you an idea of what I'm working with, here’s my current swiftfetch:
 
 <figure>
   <img src="/assets/images/void-swiftfetch.png" alt="Fastfetch output on Void Linux" width="650">
