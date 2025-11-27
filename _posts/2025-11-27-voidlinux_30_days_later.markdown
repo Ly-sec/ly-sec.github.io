@@ -10,7 +10,7 @@ To give you an idea of what I'm working with, here’s my current swiftfetch:
 
 <figure>
   <img src="/assets/images/void-swiftfetch.png" alt="Fastfetch output on Void Linux" width="650">
-  <figcaption>swiftfetch on my Void setup — clean, minimal, exactly how I like it.</figcaption>
+  <figcaption>swiftfetch on my Void setup - clean, minimal, exactly how I like it.</figcaption>
 </figure>
 
 I thought I'd have at least *one* dramatic "why did I do this to myself" moment by now - you know, something breaking, a service refusing to start, a package being severely out of date or something else. But nope. Void just kept doing Void things and stayed fully out of my way.
