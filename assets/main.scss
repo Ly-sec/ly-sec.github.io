@@ -1,52 +1,49 @@
 ---
 ---
 
-/* Import the minima theme first so we can override after */
 @import "minima";
 
 /* -------------------------
    Kanagawa color palette
-   -------------------------
-*/
+   ------------------------- */
 :root {
-  --kanagawa-ink:    #0b1220; /* deep navy / almost black */
-  --kanagawa-wave:   #274060; /* deep blue */
-  --kanagawa-sky:    #6ea6de; /* light blue accent */
-  --kanagawa-sand:   #e7cfa9; /* warm beige */
-  --kanagawa-peach:  #ff8f6b; /* peachy accent */
-  --kanagawa-pine:   #1f6f44; /* pine green */
-  --kanagawa-mist:   #dbeaf6; /* pale background tint */
-  --kanagawa-rose:   #c16b78; /* muted rose */
-  --kanagawa-gold:   #d6a84a; /* highlight / link visited */
+  --ink:    #0b1220;
+  --wave:   #274060;
+  --sky:    #6ea6de;
+  --sand:   #e7cfa9;
+  --peach:  #ff8f6b;
+  --pine:   #1f6f44;
+  --mist:   #dbeaf6;
+  --rose:   #c16b78;
+  --gold:   #d6a84a;
 }
 
-/* SCSS variables (for use inside this file) */
-$ink:    var(--kanagawa-ink);
-$wave:   var(--kanagawa-wave);
-$sky:    var(--kanagawa-sky);
-$sand:   var(--kanagawa-sand);
-$peach:  var(--kanagawa-peach);
-$pine:   var(--kanagawa-pine);
-$mist:   var(--kanagawa-mist);
-$rose:   var(--kanagawa-rose);
-$gold:   var(--kanagawa-gold);
+/* SCSS aliases */
+$ink:    #0b1220;
+$ink-soft: #10182d;  /* manually darkened */
+$ink-faint: #22293b; /* manually darkened */
+$wave:   #274060;
+$wave-dark: #1f354f; /* manually darkened */
+$sky:    #6ea6de;
+$sand:   #e7cfa9;
+$peach:  #ff8f6b;
+$pine:   #1f6f44;
+$mist:   #dbeaf6;
+$rose:   #c16b78;
+$gold:   #d6a84a;
 
-/* Utility: subtle inner shadow for cards */
+/* subtle card shadow */
 @mixin card-elevate {
   box-shadow: 0 6px 18px rgba(2,8,23,0.12), inset 0 -1px 0 rgba(255,255,255,0.02);
   border-radius: 12px;
 }
 
 /* -------------------------
-   Page / base
+   Base styles
    ------------------------- */
 body {
   background: linear-gradient(180deg, $mist 0%, #f7f9fc 100%);
   color: $ink;
-  font-weight: 400;
-  /* make text a tad warmer */
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 /* Links */
@@ -54,32 +51,37 @@ a {
   color: $wave;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+
   &:hover,
   &:focus {
     color: $sky;
-    text-decoration: underline;
   }
+
   &:visited {
     color: $gold;
   }
 }
 
-/* Header / nav */
+/* Header */
 .site-header {
   background: transparent;
-  border-bottom: 1px solid rgba($ink, 0.06);
-  .site-title, .site-description {
+  border-bottom: 1px solid rgba(11,18,32,0.06);
+
+  .site-title,
+  .site-description {
     color: $ink;
   }
-  .nav {
-    a {
-      color: darken($ink, 6%);
-      &:hover { color: $wave; }
+
+  .nav a {
+    color: $ink-soft;
+
+    &:hover {
+      color: $wave;
     }
   }
 }
 
-/* Main content card */
+/* Main content wrapper */
 .main-content,
 .archive,
 .post-card {
@@ -91,68 +93,57 @@ a {
 /* Headings */
 h1, h2, h3, h4 {
   color: $ink;
-  letter-spacing: -0.01em;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 h1 { color: $wave; }
 h2 { color: $pine; }
 h3 { color: $rose; }
 
-/* Horizontal rule */
+/* HR */
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba($ink,0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba(11,18,32,0.06), transparent);
   margin: 2rem 0;
 }
 
-/* Blockquote style - gentle Kanagawa vibe */
+/* Blockquote */
 blockquote {
   border-left: 4px solid $sky;
   background: rgba($sky, 0.06);
-  color: darken($ink, 18%);
+  color: $ink-soft;
   padding: 0.9rem 1.1rem;
-  margin: 1.2rem 0;
-  font-style: italic;
   border-radius: 8px;
+  font-style: italic;
 }
 
-/* Code blocks and inline code */
-pre.highlight, pre, code {
+/* Code blocks */
+pre.highlight {
   background: linear-gradient(180deg, rgba($wave,0.06), rgba($ink,0.02));
   color: #f8fbff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
-  border-radius: 8px;
-}
-
-pre.highlight {
   padding: 1rem;
-  overflow: auto;
-  /* syntax theme-ish accents */
-  .hljs-keyword, .hljs-selector-tag { color: $peach; }
-  .hljs-string, .hljs-title { color: $sand; }
-  .hljs-number, .hljs-literal { color: $sky; }
-  .hljs-comment { color: rgba($ink, 0.45); font-style: italic; }
+  border-radius: 8px;
+  overflow-x: auto;
 }
 
-/* Inline code */
-:where(p, li) > code {
-  padding: 0.12rem 0.36rem;
-  border-radius: 6px;
+pre code,
+code {
   background: rgba($ink, 0.06);
+  border-radius: 6px;
+  padding: 0.12rem 0.36rem;
   color: $peach;
-  font-size: 0.95em;
 }
 
-/* Buttons / call-to-action */
+/* Buttons */
 .btn, .button {
-  background: linear-gradient(180deg, $wave, darken($wave, 8%));
+  background: linear-gradient(180deg, $wave, $wave-dark);
   color: #fff;
   padding: 0.55rem 0.85rem;
   border-radius: 10px;
   border: none;
-  box-shadow: 0 6px 18px rgba(39,64,96,0.18);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 28px rgba(39,64,96,0.22);
@@ -162,51 +153,41 @@ pre.highlight {
 /* Footer */
 .site-footer {
   background: transparent;
-  color: darken($ink, 12%);
-  border-top: 1px solid rgba($ink, 0.04);
-  padding-top: 1rem;
+  color: $ink-faint;
+  border-top: 1px solid rgba(11,18,32,0.04);
 }
 
 /* Tables */
 table {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
+
   th {
     background: rgba($wave, 0.06);
     padding: 0.6rem;
     text-align: left;
     color: $ink;
   }
+
   td {
     padding: 0.6rem;
     border-top: 1px solid rgba($ink,0.06);
   }
 }
 
-/* Minor utilities */
-.kana-badge {
-  display: inline-block;
-  padding: 0.18rem 0.45rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, $sand, $peach);
-  color: $ink;
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-
-/* Accessibility: make focus outlines visible and Kanagawa colored */
+/* Focus outlines */
 :focus {
   outline: 3px solid rgba($sky, 0.18);
   outline-offset: 3px;
 }
 
-/* Make images slightly rounded for the softer Kanagawa look */
+/* Images */
 img {
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(2,8,23,0.06);
 }
 
-/* small screens adjustments */
+/* Mobile */
 @media (max-width: 768px) {
   .main-content { padding: 1rem; }
   h1 { font-size: 1.8rem; }
