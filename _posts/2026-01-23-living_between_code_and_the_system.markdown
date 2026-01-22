@@ -1,6 +1,7 @@
+---
 layout: post
 title: "Living Between Code and the System"
-date: 2026-01-22 23:59:00 +0000
+date: 2026-01-22
 categories: [blog, personal, foss]
 ---
 
@@ -28,6 +29,6 @@ Writing about it is not complaining. It is not asking for sympathy. It is simply
 
 # Code and Chaos
 
-I will keep working on Noctalia-shell, and alongside Lemmy we continue learning, building, and sharing. I navigate the friction between doing something I love and the systems around me, and that will not stop.
+I will keep working on Noctalia, and alongside Lemmy we continue learning, building, and sharing. I navigate the friction between doing something I love and the systems around me, and that will not stop.
 
 *Posted on January 23, 2026.*
