@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<section class="home-intro wrap">
+  <div><p class="eyebrow"><span class="status-dot"></span> LY-SEC / PERSONAL BLOG</p><h1>Linux. Security.<br><em>Open source.</em></h1></div>
+  <div class="intro-aside"><p>I write about Linux, security and the software I work on.</p><div class="intro-links"><a href="{{ '/about/' | relative_url }}">About me ↗</a><a href="https://github.com/{{ site.github_username }}">GitHub ↗</a></div><span class="intro-count">{{ site.posts.size | prepend: '0' | slice: -2, 2 }} POSTS / SINCE {{ site.posts.last.date | date: '%Y' }}</span></div>
+</section>
+{% assign latest = site.posts.first %}
+{% if latest %}
+{% capture topic %}{% include topic.html post=latest %}{% endcapture %}
+{% assign topic = topic | strip %}
+{% assign topic_label = site.data.topics | where: 'id', topic | first %}
+<section class="featured-section wrap" aria-labelledby="latest-title">
+  <div class="section-label"><h2 id="latest-title">Latest post</h2><span>{{ latest.date | date: '%d %B %Y' }}</span></div>
+  <article class="featured-post">
+    <div class="feature-copy"><div class="post-labels"><span class="topic-label topic-{{ topic }}">{{ topic_label.label | default: 'Notes' }}</span><span>{{ latest.content | number_of_words | divided_by: 220 | plus: 1 }} min read</span></div><h3><a href="{{ latest.url | relative_url }}">{{ latest.title | escape }}</a></h3><p>{% include summary.html post=latest words=44 %}</p><a class="read-link" href="{{ latest.url | relative_url }}">Read the post <span aria-hidden="true">↗</span></a></div>
+    <a class="feature-art" href="{{ latest.url | relative_url }}" aria-label="Read {{ latest.title | escape }}"><svg viewBox="0 0 460 370" fill="none" aria-hidden="true"><defs><pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="currentColor" opacity=".2"/></pattern></defs><rect width="460" height="370" fill="url(#dot-grid)"/><g class="feature-lines" stroke="currentColor" stroke-width="1"><circle cx="260" cy="185" r="133"/><circle cx="260" cy="185" r="110"/><circle cx="260" cy="185" r="87"/><circle cx="260" cy="185" r="64"/><path d="M70 185h380M260 28v314M130 55l260 260M130 315 390 55"/></g><circle class="feature-disc" cx="260" cy="185" r="42"/><circle class="feature-point" cx="260" cy="185" r="8"/><path class="feature-orbit" d="M139 130a133 133 0 0 1 246 10" stroke-width="3" stroke-linecap="round"/><circle class="feature-marker" cx="158" cy="271" r="7"/></svg><span class="art-topline">{{ topic_label.label | default: 'Notes' | upcase }} / {{ latest.date | date: '%Y' }}</span><span class="art-number">{{ latest.date | date: '%d' }}<small>{{ latest.date | date: '%b' | upcase }}</small></span><span class="art-bottomline">LY-SEC / {{ latest.date | date: '%m.%Y' }}</span></a>
+  </article>
+</section>
+{% endif %}
+<section class="recent-section wrap" aria-labelledby="recent-title">
+  <div class="section-label"><h2 id="recent-title">More writing <span class="label-count">{{ site.posts.size | minus: 1 }}</span></h2><a href="{{ '/archive/' | relative_url }}">Browse the archive ↗</a></div>
+  <div class="post-list">{% for post in site.posts offset:1 %}{% include post-row.html post=post %}{% endfor %}</div>
+</section>
+<section class="home-bottom wrap"><div><p class="eyebrow">FOLLOW ALONG</p><h2>New posts, <em>via RSS.</em></h2><p>Subscribe in your feed reader.</p></div><a class="outline-button" href="{{ '/feed.xml' | relative_url }}">Get the feed <span aria-hidden="true">↗</span></a></section>

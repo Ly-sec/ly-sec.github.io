@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" id="top" data-theme="dusk">
+{% include head.html %}
+<body class="layout-{{ page.layout }}">
+  {% include header.html %}
+  <main id="main">{{ content }}</main>
+  {% include footer.html %}
+  <div class="notification" data-notification role="status" aria-live="polite"></div>
+</body>
+</html>

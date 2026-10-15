@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{% capture topic %}{% include topic.html post=page %}{% endcapture %}
+{% assign topic = topic | strip %}
+{% assign topic_label = site.data.topics | where: 'id', topic | first %}
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<article class="article wrap">
+  <header class="article-header"><a class="back-link" href="{{ '/' | relative_url }}">← All writing</a><div class="post-labels"><a class="topic-label topic-{{ topic }}" href="{{ '/archive/' | relative_url }}?topic={{ topic }}">{{ topic_label.label | default: 'Notes' }}</a><span>{{ page.content | number_of_words | divided_by: 220 | plus: 1 }} min read</span></div><h1>{{ page.title | escape }}</h1><div class="article-byline"><img src="{{ site.logo | relative_url }}" alt="" width="32" height="32"><a href="{{ '/about/' | relative_url }}">Ly-sec</a><span class="byline-dot">·</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %B %Y' }}</time><button class="copy-link" type="button" data-copy-link hidden>Copy link ↗</button></div></header>
+  <div class="article-grid"><div class="prose article-body" data-article-body>
+    {% assign body = content %}
+    {% assign opening = content | split: '</h1>' | first %}
+    {% assign heading = opening | strip_html | strip | downcase %}
+    {% assign title = page.title | downcase %}
+    {% if opening contains '<h1' and heading == title %}{% assign body = body | remove_first: opening | remove_first: '</h1>' %}{% endif %}
+    {{ body | replace: '<h1 ', '<h2 ' | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' }}
+  </div><aside class="article-sidebar" data-toc hidden><div class="toc-sticky"><p class="eyebrow">ON THIS PAGE</p><nav aria-label="Table of contents" data-toc-links></nav><a class="toc-top" href="#top">Back to top ↑</a></div></aside></div>
+  <div class="article-end"><span class="end-mark" aria-hidden="true">✳</span><span>Thanks for reading.</span><a href="{{ '/feed.xml' | relative_url }}">Follow via RSS ↗</a></div>
+  <nav class="post-navigation" aria-label="More posts">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>← Older post</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}{% if page.next %}<a href="{{ page.next.url | relative_url }}"><span>Newer post →</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}</nav>
+</article>

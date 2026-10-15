@@ -1,0 +1,13 @@
+{% capture topic %}{% include topic.html post=include.post %}{% endcapture %}
+{% assign topic = topic | strip %}
+{% assign topic_label = site.data.topics | where: 'id', topic | first %}
+{% assign minutes = include.post.content | number_of_words | divided_by: 220 | plus: 1 %}
+<article class="post-row" data-post data-topic="{{ topic }}">
+  <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}"><span>{{ include.post.date | date: '%d' }}</span> {{ include.post.date | date: '%b %Y' }}</time>
+  <div class="post-details">
+    <div class="post-labels"><span class="topic-label topic-{{ topic }}">{{ topic_label.label | default: 'Notes' }}</span><span>{{ minutes }} min read</span></div>
+    <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title | escape }}</a></h3>
+    <p>{% include summary.html post=include.post words=30 %}</p>
+  </div>
+  <a class="post-arrow" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title | escape }}">↗</a>
+</article>

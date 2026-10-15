@@ -21,14 +21,14 @@
 title: Ly-sec's Blog
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  This is my blog. I write about everything linux related.
+  This is my blog. I write about everything linux & security related.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lysec.dev" # the base hostname & protocol for your site
 logo: /assets/images/lysec.png
-github_username:  ly-sec
+github_username: ly-sec
 
 # Build settings
-theme: minima
+# Layouts and styles are maintained in this repository.
 plugins:
   - jekyll-feed
 
@@ -53,3 +53,11 @@ plugins:
 #   - vendor/ruby/
 
 future: true
+
+# Fen layouts also apply to posts that omit a layout in their front matter.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

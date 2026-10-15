@@ -1,0 +1,13 @@
+{%- assign title = include.post.title | downcase -%}
+{%- assign terms = include.post.categories | join: ' ' | append: ' ' -%}
+{%- assign tags = include.post.tags | join: ' ' -%}
+{%- assign terms = terms | append: tags | downcase -%}
+{%- if include.post.topic -%}{{ include.post.topic | slugify }}
+{%- elsif terms contains 'security' or terms contains 'bugbounty' -%}security
+{%- elsif title contains 'void' or title contains 'gentoo' or terms contains 'distro' -%}linux
+{%- elsif terms contains 'privacy' -%}privacy
+{%- elsif terms contains 'editors' -%}tools
+{%- elsif terms contains 'foss' or terms contains 'personal' -%}open-source
+{%- elsif terms contains 'dev' -%}development
+{%- else -%}notes
+{%- endif -%}

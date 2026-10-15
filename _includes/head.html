@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="{{ site.data.fen.dusk.colors.water }}">
+  <meta name="color-scheme" content="dark light">
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}Ly-sec</title>
+  {% if page.layout == 'post' %}
+  {% capture description %}{% include summary.html post=page words=40 raw=true %}{% endcapture %}
+  {% else %}{% assign description = page.description | default: site.description %}{% endif %}
+  <meta name="description" content="{{ description | strip | strip_html | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="Ly-sec">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ description | strip | strip_html | escape }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ site.logo | absolute_url }}">
+  {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="Ly-sec's Blog" href="{{ '/feed.xml' | relative_url }}">
+  <script>
+    (function () {
+      var theme = 'dusk';
+      try { var saved = localStorage.getItem('lysec-theme'); if (saved === 'dusk' || saved === 'dawn') theme = saved; } catch (_) {}
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.classList.add('js');
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dawn' ? '{{ site.data.fen.dawn.colors.water }}' : '{{ site.data.fen.dusk.colors.water }}';
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;450;500;550;600;650;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <script src="{{ '/assets/blog.js' | relative_url }}" defer></script>
+</head>

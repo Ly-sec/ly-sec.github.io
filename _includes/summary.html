@@ -1,0 +1,10 @@
+{%- assign limit = include.words | default: 32 -%}
+{%- assign rendered = include.post.content | markdownify -%}
+{%- assign paragraphs = rendered | split: '</p>' -%}
+{%- for paragraph in paragraphs -%}
+  {%- if paragraph contains '<p>' -%}
+    {%- assign text = paragraph | split: '<p>' | last | strip_html | strip_newlines | strip -%}
+    {%- if include.raw -%}{{- text | truncatewords: limit -}}{%- else -%}{{- text | truncatewords: limit | escape -}}{%- endif -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}

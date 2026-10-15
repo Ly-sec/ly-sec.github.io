@@ -1,0 +1,118 @@
+{
+  "dusk": {
+    "colors": {
+      "water": "#0B1824",
+      "bank": "#12282F",
+      "mist": "#E8E6C8",
+      "lichen": "#ADB99B",
+      "moss": "#A8C86B",
+      "fern": "#5A8F78",
+      "amber": "#D4B071",
+      "clay": "#D36F5A"
+    },
+    "ui": {
+      "background": "water",
+      "surface": "bank",
+      "foreground": "mist",
+      "muted": "lichen",
+      "accent": "moss",
+      "onAccent": "#101A19",
+      "secondary": "fern",
+      "onSecondary": "#071712",
+      "tertiary": "amber",
+      "onTertiary": "#21160A",
+      "error": "clay",
+      "onError": "#220C09",
+      "border": "#3B5E59",
+      "shadow": "#02080B",
+      "hover": "#BDD87A",
+      "onHover": "water"
+    },
+    "terminal": {
+      "background": "water",
+      "foreground": "mist",
+      "cursor": "moss",
+      "cursorText": "water",
+      "selectionBackground": "#29483D",
+      "selectionForeground": "mist",
+      "normal": {
+        "black": "bank",
+        "red": "#B85F4D",
+        "green": "#789B4E",
+        "yellow": "#B99B59",
+        "blue": "#3A6370",
+        "magenta": "#986A62",
+        "cyan": "#4F8879",
+        "white": "#CACCAD"
+      },
+      "bright": {
+        "black": "#60716B",
+        "red": "#D97A60",
+        "green": "moss",
+        "yellow": "amber",
+        "blue": "#668A94",
+        "magenta": "#BE8573",
+        "cyan": "#75AA99",
+        "white": "mist"
+      }
+    }
+  },
+  "dawn": {
+    "colors": {
+      "water": "#EFF1DE",
+      "bank": "#DEE5CE",
+      "mist": "#102329",
+      "lichen": "#455D52",
+      "moss": "#526E2D",
+      "fern": "#326A59",
+      "amber": "#8A5C2D",
+      "clay": "#A74B40"
+    },
+    "ui": {
+      "background": "water",
+      "surface": "bank",
+      "foreground": "mist",
+      "muted": "lichen",
+      "accent": "moss",
+      "onAccent": "#FAFDEB",
+      "secondary": "fern",
+      "onSecondary": "#F3FFF9",
+      "tertiary": "amber",
+      "onTertiary": "#FFF8EA",
+      "error": "clay",
+      "onError": "#FFF7F2",
+      "border": "#788C7A",
+      "shadow": "#C4CEB8",
+      "hover": "#455F25",
+      "onHover": "#FAFDEB"
+    },
+    "terminal": {
+      "background": "water",
+      "foreground": "mist",
+      "cursor": "moss",
+      "cursorText": "water",
+      "selectionBackground": "#CCD9BA",
+      "selectionForeground": "mist",
+      "normal": {
+        "black": "#D7DDC8",
+        "red": "#914638",
+        "green": "moss",
+        "yellow": "#7C622A",
+        "blue": "#365E69",
+        "magenta": "#79564E",
+        "cyan": "#386F61",
+        "white": "mist"
+      },
+      "bright": {
+        "black": "#687970",
+        "red": "#B85F4D",
+        "green": "#6E8D3F",
+        "yellow": "#987A37",
+        "blue": "#537985",
+        "magenta": "#986A62",
+        "cyan": "#538B7C",
+        "white": "#0B1824"
+      }
+    }
+  }
+}

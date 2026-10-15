@@ -1,0 +1,13 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+<section class="page-heading wrap"><p class="eyebrow">THE ARCHIVE</p><h1>All <em>writing.</em></h1><p class="page-description">{{ site.posts.size }} posts on Linux, security and software.</p></section>
+<section class="archive-section wrap" data-archive aria-label="Post archive">
+  <div class="archive-tools" data-archive-tools hidden><div class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><label class="sr-only" for="post-search">Search titles, summaries and topics</label><input id="post-search" type="search" placeholder="Search posts..." autocomplete="off"><kbd aria-hidden="true">/</kbd></div><span class="archive-result-count" data-result-count role="status" aria-live="polite">{{ site.posts.size }} posts</span></div>
+  <div class="topic-filters" data-topic-filters role="group" aria-label="Filter by topic" hidden><button type="button" data-filter="all" aria-pressed="true">All posts</button>{% for topic in site.data.topics %}<button type="button" data-filter="{{ topic.id }}" aria-pressed="false">{{ topic.label }}</button>{% endfor %}</div>
+  {% assign years = site.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
+  {% for year in years %}<section class="archive-year" data-year><h2>{{ year.name }}<span>{{ year.items.size }} posts</span></h2><div class="post-list">{% for post in year.items %}{% include post-row.html post=post %}{% endfor %}</div></section>{% endfor %}
+  <div class="empty-state" data-empty-state hidden><h2>No posts found.</h2><p>Try another search or topic.</p><button class="text-button" type="button" data-reset-filters>Clear filters ↗</button></div>
+</section>

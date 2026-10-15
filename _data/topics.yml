@@ -1,0 +1,14 @@
+- id: linux
+  label: Linux
+- id: security
+  label: Security
+- id: development
+  label: Development
+- id: open-source
+  label: Open source
+- id: privacy
+  label: Privacy
+- id: tools
+  label: Tools
+- id: notes
+  label: Notes
